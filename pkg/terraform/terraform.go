@@ -20,21 +20,25 @@ const DefaultWorkingDir = "/cnab/app/terraform"
 
 const defaultTerraformVersion = "0.12.17"
 
+
+
 // terraform is the logic behind the terraform mixin
 type Mixin struct {
 	*context.Context
-	schema           *packr.Box
-	WorkingDir       string
-	TerraformVersion string
+	schema                *packr.Box
+	WorkingDir            string
+	TerraformVersion      string
+	TerraformVarsFilename string
 }
 
 // New terraform mixin client, initialized with useful defaults.
 func New() *Mixin {
 	return &Mixin{
-		Context:          context.New(),
-		schema:           packr.New("schema", "./schema"),
-		WorkingDir:       DefaultWorkingDir,
-		TerraformVersion: defaultTerraformVersion,
+		Context:               context.New(),
+		schema:                packr.New("schema", "./schema"),
+		WorkingDir:            DefaultWorkingDir,
+		TerraformVersion:      defaultTerraformVersion,
+		TerraformVarsFilename: DefaultTerraformVarFilename,
 	}
 }
 
